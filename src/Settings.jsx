@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Link} from 'react-router-dom';
-import "./App.jsx"
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 import styled from "styled-components";
+
 
 const StyledLink = styled(Link)`
     color : #FFFFFF;
@@ -70,19 +70,20 @@ const ButtonRow2 = styled.div`
 `;
 
 
-
 // 목표 체크리스트 관련 변수
 const NickName = "OOO";
 const Text = "님,";
-const Text2 = "어떤 목표를 설정하시겠어요?";
+const Text2 = "어떤 정보를 수정하시겠어요?";
 const IndividualGoalButton = "목표 보기(개인)";
 const GroupGoalButton = "목표 보기(그룹)";
 const GroupButton = "그룹 보러 가기";
 const StartButton = "시작하기";
-const SettingButton = "설정";    
+const SettingButton = "설정";
 
 
-const SGHeader=()=>{
+
+
+const Header=()=>{
     return (
         <Wrapper>
             <NickNameText>
@@ -120,70 +121,8 @@ const SGHeader=()=>{
     );
 };
 
-const QuestionContainer = styled.div`
-    display : flex;
-    flex-direction : column;
-    margin : 1vh 0vh 0vh 0vh;
-    width : 100%;
-    gap : 1vh;
-    justify-content : center;
-`;
-
-
-// 텍스트만 적어둔 배열
-const text = ["운동의 종류를 선택해 주세요","목표 시간을 적어 주세요"];
-// 텍스트 스타일
-const TextStyle = styled.div`
-    font-size : 20px;
-    display :flex;
-    justify-content : center;
-`;
-
-// 설정(운동종류, 목표시간) 감싸는 부분
-const SettingContainer = styled.div`
-    display : flex;
-    flex-direction : column;
-    padding : 5vh 0vh 5vh 0vh;
-    gap : 1vh;
-`;
-
-// 운동 종류 선택 관련 라디오 스타일
-// 목표 시간 선택 관련 number 스타일
-const InputStyle = styled.div`
-    display : flex;
-    justify-content : center;
-`;
-
-const Setting1 = () =>{
-    return (
-        <QuestionContainer>
-            <SettingContainer>
-                <TextStyle>
-                    {text[0]}
-                </TextStyle>
-                <InputStyle>
-                    <input type="radio"/>근력운동
-                    <input type="radio"/>유산소
-                </InputStyle>
-            </SettingContainer>        
-            <SettingContainer>
-                <TextStyle>
-                    {text[1]}
-                </TextStyle>
-                <InputStyle>
-                    <input type="number"/>시
-                    <input type="number"/>분
-                    <input type="number"/>초
-                </InputStyle>
-            </SettingContainer>
-            
-        </QuestionContainer>
-    
-    );
-}
-
 const backButton = "이전";
-const nextButton = "다음";
+const nextButton = "수정 완료";
 const ReuseButtonContainer = styled.div`
     background-color : #4E4FEB;
     color : white;
@@ -231,12 +170,21 @@ const ReuseButton = () =>{
     
 }
 
-function SetGoal(){
-    return (<div>
-        <SGHeader/>
-        <Setting1/>
-        <ReuseButton/>
-    </div>);
+
+function Settings () {
+    return(
+        <div>
+            <Header/>
+            <ReuseButton/>
+        </div>
+    );
+    
 }
 
-export default SetGoal;
+
+export default Settings;
+
+
+
+
+             
