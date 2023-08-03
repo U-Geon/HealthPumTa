@@ -74,7 +74,7 @@ const ButtonRow2 = styled.div`
 // 목표 체크리스트 관련 변수
 const NickName = "OOO";
 const Text = "님,";
-const Text2 = "어떤 목표를 설정하시겠어요?";
+const Text2 = "어떤 목표를 수정하시겠어요?";
 const IndividualGoalButton = "목표 보기(개인)";
 const GroupGoalButton = "목표 보기(그룹)";
 const GroupButton = "그룹 보러 가기";
@@ -82,7 +82,7 @@ const StartButton = "시작하기";
 const SettingButton = "설정";    
 
 
-const SGHeader=()=>{
+const EGHeader=()=>{
     return (
         <Wrapper>
             <NickNameText>
@@ -154,6 +154,10 @@ const InputStyle = styled.div`
     justify-content : center;
 `;
 
+
+
+
+
 const Setting1 = () =>{
     return (
         <QuestionContainer>
@@ -204,12 +208,6 @@ const ReuseButtonWrapper = styled.div`
     justify-content : center;
 `;
 
-const ReuseButtonTextStyle = styled.div`
-    text-decoration : none;
-    color : white;
-`;
-
-
 
 const ReuseButton = () =>{
     
@@ -221,7 +219,7 @@ const ReuseButton = () =>{
                 </StyledLink>
             </ReuseButtonContainer>
             <ReuseButtonContainer>
-                <StyledLink to="/SetGoal2">
+                <StyledLink to="/EditGoal2">
                     {nextButton}
                 </StyledLink>
             </ReuseButtonContainer>
@@ -231,12 +229,12 @@ const ReuseButton = () =>{
     
 }
 
-function SetGoal(){
+function EditGoal(){
     return (<div>
-        <SGHeader/>
+        <EGHeader/>
         <Setting1/>
         <ReuseButton/>
     </div>);
 }
 
-export default SetGoal;
+export default EditGoal;

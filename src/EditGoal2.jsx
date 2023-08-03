@@ -74,7 +74,7 @@ const ButtonRow2 = styled.div`
 // 목표 체크리스트 관련 변수
 const NickName = "OOO";
 const Text = "님,";
-const Text2 = "어떤 목표를 설정하시겠어요?";
+const Text2 = "어떤 목표를 수정하시겠어요?";
 const IndividualGoalButton = "목표 보기(개인)";
 const GroupGoalButton = "목표 보기(그룹)";
 const GroupButton = "그룹 보러 가기";
@@ -82,7 +82,7 @@ const StartButton = "시작하기";
 const SettingButton = "설정";    
 
 
-const SGHeader=()=>{
+const EGHeader2=()=>{
     return (
         <Wrapper>
             <NickNameText>
@@ -94,8 +94,9 @@ const SGHeader=()=>{
             <ButtonWrapper>
                 <ButtonRow1>
                     <StyledLink to="/">
-                        {IndividualGoalButton}
+                        {SettingButton}
                     </StyledLink>
+                    {IndividualGoalButton}
                 </ButtonRow1>
                 <ButtonRow1>
                     {GroupGoalButton}
@@ -131,7 +132,7 @@ const QuestionContainer = styled.div`
 
 
 // 텍스트만 적어둔 배열
-const text = ["운동의 종류를 선택해 주세요","목표 시간을 적어 주세요"];
+const text = "세부 목표를 설정해 주세요";
 // 텍스트 스타일
 const TextStyle = styled.div`
     font-size : 20px;
@@ -145,45 +146,95 @@ const SettingContainer = styled.div`
     flex-direction : column;
     padding : 5vh 0vh 5vh 0vh;
     gap : 1vh;
+    justify-content : center;
+    align-items : center;
 `;
 
 // 운동 종류 선택 관련 라디오 스타일
 // 목표 시간 선택 관련 number 스타일
 const InputStyle = styled.div`
     display : flex;
-    justify-content : center;
+    flex-direction : column;
+    width : 80%;
+    gap : 2vh;
 `;
+
+
 
 const Setting1 = () =>{
     return (
         <QuestionContainer>
             <SettingContainer>
                 <TextStyle>
-                    {text[0]}
+                    {text}
                 </TextStyle>
                 <InputStyle>
-                    <input type="radio"/>근력운동
-                    <input type="radio"/>유산소
+                    <input type="text"/>
+                    <input type="text"/>
+                    <input type="text"/>
+                    <input type="text"/>
+                    <input type="text"/>
+                    <input type="text"/>
+                    <input type="text"/>
+                    <input type="text"/>
+                    <input type="text"/>
+                    <input type="text"/>
+
+
                 </InputStyle>
             </SettingContainer>        
-            <SettingContainer>
-                <TextStyle>
-                    {text[1]}
-                </TextStyle>
-                <InputStyle>
-                    <input type="number"/>시
-                    <input type="number"/>분
-                    <input type="number"/>초
-                </InputStyle>
-            </SettingContainer>
-            
         </QuestionContainer>
     
     );
 }
 
+const AddButton = "+";
+const RemoveButton = "-";
+const AddDeleteButtonContainer = styled.div`
+    background-color : #4E4FEB;
+    color : white;
+    width : 5vh;
+    font-size : 20px;
+    border-radius : 50px;
+    height : 5vh;
+    display : flex;
+    align-items : center;
+    text-align : center;
+    justify-content : center;
+`;
+const AddDeleteButtonWrapper = styled.div`
+    display : flex;
+    flex-direction : row;
+    gap : 1vh;
+    justify-content : center;
+`;
+
+
+const AddDeleteButton = () =>{
+    
+    return (
+        <AddDeleteButtonWrapper>
+            <AddDeleteButtonContainer>
+                <StyledLink to="/EditGoal2">
+                    {AddButton}
+                </StyledLink>
+            </AddDeleteButtonContainer>
+            <AddDeleteButtonContainer>
+                <StyledLink to="/EditGoal2">
+                    {RemoveButton}
+                </StyledLink>
+            </AddDeleteButtonContainer>
+        </AddDeleteButtonWrapper>
+        
+    )
+    
+}
+
+
+
+
 const backButton = "이전";
-const nextButton = "다음";
+const nextButton = "수정 완료";
 const ReuseButtonContainer = styled.div`
     background-color : #4E4FEB;
     color : white;
@@ -204,24 +255,18 @@ const ReuseButtonWrapper = styled.div`
     justify-content : center;
 `;
 
-const ReuseButtonTextStyle = styled.div`
-    text-decoration : none;
-    color : white;
-`;
-
-
 
 const ReuseButton = () =>{
     
     return (
         <ReuseButtonWrapper>
             <ReuseButtonContainer>
-                <StyledLink to="/">
+                <StyledLink to="/EditGoal">
                     {backButton}
                 </StyledLink>
             </ReuseButtonContainer>
             <ReuseButtonContainer>
-                <StyledLink to="/SetGoal2">
+                <StyledLink to="/">
                     {nextButton}
                 </StyledLink>
             </ReuseButtonContainer>
@@ -231,12 +276,13 @@ const ReuseButton = () =>{
     
 }
 
-function SetGoal(){
+function EditGoal2(){
     return (<div>
-        <SGHeader/>
+        <EGHeader2/>
         <Setting1/>
+        <AddDeleteButton/>
         <ReuseButton/>
     </div>);
 }
 
-export default SetGoal;
+export default EditGoal2;
