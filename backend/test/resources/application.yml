@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
@@ -16,3 +17,23 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
+=======
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: geon
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+>>>>>>> Stashed changes
