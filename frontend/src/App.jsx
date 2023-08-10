@@ -1,12 +1,8 @@
-import React from 'react';
-import {
-  BrowserRouter, 
-  Route, 
-  Routes} 
-  from 'react-router-dom';
-import Login from "./pages/Login";
-import Time from "./pages/Time";
-import Main from "./pages/Main";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/components/Login/Login";
+import Time from "./pages/components/Time/Time";
+import Main from "./pages/components/Main/Main";
 
 function App() {
   return (
