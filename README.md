@@ -16,4 +16,25 @@
 	- 'org.springframework.boot:spring-boot-starter-validation'
   - lombok
   - h2 database
+ 
+- 이후 application.properties 대신 application.yml로 바꿔주고 추가
+```
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/healthpumta
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+```
