@@ -20,6 +20,7 @@ class MemberServiceTest {
 
     @Autowired
     MemberService memberService;
+    LoginService loginService;
     @Test
     public void 회원가입() throws Exception {
         // given
@@ -102,6 +103,6 @@ class MemberServiceTest {
         memberService.join(member1);
 
         // then
-        Assertions.assertThrows(Exception.class, () -> memberService.login("fbrjs", "12345678"));
+        Assertions.assertThrows(Exception.class, () -> loginService.login("fbrjs", "12345678"));
     }
 }

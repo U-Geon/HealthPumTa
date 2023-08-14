@@ -33,14 +33,4 @@ public class Exercise {
         this.member = member;
         member.getExercises().add(this);
     }
-
-    // 생성 메서드
-    public static Exercise createExercise(Member member, Goal... goals) {
-        Exercise exercise = new Exercise();
-        exercise.setMember(member);
-        for (Goal goal : goals) {
-            goal.setExercise(exercise);
-        }
-        return exercise;
-    }
 }

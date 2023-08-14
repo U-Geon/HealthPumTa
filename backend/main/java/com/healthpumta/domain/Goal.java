@@ -15,18 +15,17 @@ public class Goal {
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 
-    private String goal;
-
-    // 생성 메서드
-    public static Goal createGoal(String text) {
-        Goal tmp = new Goal();
-        tmp.setGoal(text);
-        return tmp;
-    }
+    private String name;
 
     // 연관관계 편의 메서드
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
         exercise.getGoals().add(this);
+    }
+
+    public static void createGoal(Exercise exercise, String name) {
+        Goal goal = new Goal();
+        goal.setExercise(exercise);
+        goal.setName(name);
     }
 }

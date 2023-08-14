@@ -2,6 +2,7 @@ package com.healthpumta.service;
 
 import com.healthpumta.domain.Member;
 import com.healthpumta.repository.MemberRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,33 +51,23 @@ public class MemberService {
     // 회원 정보 수정
     // 비밀번호, 닉네임, 키 몸무게 나이 변경
     @Transactional
-    public void updateMember(Long id, String nickName, String password) {
+    public void updateMember(Long id, String password, int height, int weight,int age) {
         Member member = memberRepository.findOne(id);
-        member.setNickname(nickName);
         member.setPassword(password);
+        member.setHeight(height);
+        member.setWeight(weight);
+        member.setAge(age);
+    }
+
+    // 타이머 데이터 입력
+    @Transactional
+    public void updateTimer(Long id, String timer) {
+        Member member = memberRepository.findOne(id);
+        member.setTimer(timer);
     }
 
     // 닉네임 중복 확인
     private void validateDuplicateNickname() {
 
-    }
-
-    // 로그인
-    public Member login(String id, String password) {
-        return memberCheck(id, password);
-    }
-
-    // 로그인 체크
-    private Member memberCheck(String id, String password) {
-        List<Member> findMembers = memberRepository.findByLoginId(id);
-        if(findMembers.stream().findAny().isEmpty()) {
-            throw new IllegalStateException("없는 아이디입니다.");
-        }
-        Member member = findMembers.get(0);
-        if (member.getPassword().equals(password)) {
-            return member;
-        } else {
-            throw new IllegalStateException("비밀번호가 틀립니다.");
-        }
     }
 }
