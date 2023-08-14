@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import React, {Component} from 'react';
+import {useNavigate} from "react-router-dom";
 import * as L from "./GoalEditModalStyle";
-
+import EditGoal from "../EditGoal/EditGoal";
 
 function GoalEditModal() {
 
@@ -12,7 +13,6 @@ function GoalEditModal() {
         // !false -> !true -> !false
         setIsOpen(!isOpen) 
     };
-    
     const [isDropdownView, setDropdownView] = useState(false)
     const handleClickContainer = () => {
         setDropdownView(!isDropdownView);
@@ -23,9 +23,13 @@ function GoalEditModal() {
         }, 200);
     }
     
+    const EditPageNavigate = useNavigate();
 
-
-    
+    const EditPageLink = () =>{
+        return (
+            EditPageNavigate("/goal/edit")
+        );
+    }
 
     
     return (
@@ -71,7 +75,7 @@ function GoalEditModal() {
                 </div>
                 <L.ButtonContainer>
                     <L.ExitBtn onClick={openModalHandler}>이전</L.ExitBtn>
-                    <L.EditBtn onClick={openModalHandler}>수정</L.EditBtn>
+                    <L.EditBtn onClick={EditPageLink}>수정</L.EditBtn>
                 </L.ButtonContainer>
                 </L.ModalView>
             </L.ModalBackdrop>
