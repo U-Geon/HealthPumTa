@@ -1,33 +1,25 @@
-import React from 'react';
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
-import SGHeader from "./SetGoal.jsx";
-import SGHeader2 from "./SetGoal2.jsx";
-import Mypage from "./Mypage.jsx";
-import Settings from "./Settings.jsx";
-import EGHeader from "./EditGoal.jsx";
-import EGHeader2 from "./EditGoal2.jsx";
-
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 
 
 
 
 
 function App(){
+    const [hello, setHello] = useState('')
+
+    useEffect(() => {
+        axios.get('/api/hello')
+        .then(response => setHello(response.data))
+        .catch(error => console.log(error))
+    }, []);
+
     return (
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Mypage />} />
-            {/* 임시 코드 */}
-            {/* <Route path="/Mypage" element={<Mypage />} /> */}
-            {/* 임시 코드 */}
-            <Route path="/SetGoal" element={<SGHeader />} />
-            <Route path="/SetGoal2" element={<SGHeader2 />} />
-            <Route path="/EditGoal" element={<EGHeader />} />
-            <Route path="/EditGoal2" element={<EGHeader2 />} />
-            <Route path="/Settings" element={<Settings />} />
-          </Routes>
-        </BrowserRouter>
+        <div>
+            백엔드에서 가져온 데이터입니다 : {hello}
+        </div>
     );
+
 }
 
 export default App;
