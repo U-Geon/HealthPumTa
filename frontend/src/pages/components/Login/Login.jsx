@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as L from "./LoginStyle.js";
+import axios from "axios";
 
 export default function Login() {
   const [id, setID] = useState("");
@@ -8,6 +10,8 @@ export default function Login() {
   const [idValid, setIdValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
+
+  const navigate = useNavigate();
 
   const handleId = (e) => {
     setID(e.target.value);
@@ -27,6 +31,7 @@ export default function Login() {
       setPwValid(false);
     }
   };
+
   useEffect(() => {
     if (idValid && pwValid) {
       setNotAllow(false);
@@ -35,17 +40,41 @@ export default function Login() {
     setNotAllow(true);
   }, [idValid, pwValid]);
 
+  const handleLogin = () => {
+    // 서버로 보낼 데이터
+    const userData = {
+      id: id,
+      pw: pw,
+    };
+
+    // axios를 사용하여 서버에 POST 요청 전송
+    axios
+      .post("/api/login", userData) // /api/login은 백엔드의 로그인 엔드포인트 주소입니다.
+      .then((response) => {
+        // 서버 응답 처리
+        console.log("로그인 성공!");
+        navigate("/Time");
+      })
+      .catch((error) => {
+        console.error("로그인 실패:", error);
+      });
+  };
+
+  const handleLoginAndNavigate = () => {
+    handleLogin(); // 먼저 로그인 처리 함수 호출
+    navigate("/Main"); // 그 다음에 navigate 함수 호출
+  };
+
   return (
     <L.Page>
-      <L.TitleWrap>
+      <L.TitleDiv>
         <L.HealthPumTa>헬</L.HealthPumTa>스를
         <L.HealthPumTa> 품</L.HealthPumTa>은<L.HealthPumTa> 타</L.HealthPumTa>
         이머
-      </L.TitleWrap>
+      </L.TitleDiv>
 
-      <L.ContentWrap>
+      <L.ContentDiv>
         <L.InputId>ID</L.InputId>
-
         <L.InputWrap>
           <L.Input
             type="text"
@@ -56,7 +85,7 @@ export default function Login() {
           ></L.Input>
         </L.InputWrap>
 
-        <L.InputTitle>PASSWORD</L.InputTitle>
+        <L.InputPassword>PASSWORD</L.InputPassword>
         <L.InputWrap>
           <L.Input
             type="password"
@@ -66,11 +95,13 @@ export default function Login() {
             onChange={handlePw}
           ></L.Input>
         </L.InputWrap>
-      </L.ContentWrap>
+      </L.ContentDiv>
 
-      <L.LoginBottom>
-        <L.BottomButton disabled={notAllow}>로그인</L.BottomButton>
-      </L.LoginBottom>
+      <L.ButtonContainer>
+        <L.LoginButton disabled={notAllow} onClick={handleLoginAndNavigate} >
+          로그인
+        </L.LoginButton>
+      </L.ButtonContainer>
     </L.Page>
   );
 }

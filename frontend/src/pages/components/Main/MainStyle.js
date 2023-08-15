@@ -7,67 +7,84 @@ export const Page = styled.div`
     bottom: 0;
     width: 100%;
     max-width: 500px;
+    padding: 0 20px;
     left: 50%;
     transform: translate(-50%, 0);
-    background-color:white;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 `;
 
-export const LogoD = styled.div`
-    margin-top:20%;
+
+export const Wrapper = styled.div`
+    display : flex;
+    flex-direction : column;
+    margin : 5vh 0vh 0vh 0vh;
+    width : 100%;
+    gap : 1vh;
+    justify-content : center;
 `;
 
-export const Logo = styled.img`
-    width: 80%;
-    max-height: 350px; /* 높이를 원하는 값으로 조정 */
-    margin: auto;
-    display: block;
+export const NickNameText = styled.div`
+    font-size : 30px;
+    display : flex;
+    justify-content :center;
 `;
 
-export const Title = styled.div`
-    font-size: 30px;
-    color: #4E4FEB; 
+export const MainText = styled.div`
+    font-size : 25px;
+    padding : 0vh 0vh 2vh 0vh;
+    display : flex;
+    justify-content : center;
+`;
+
+export const Timer = styled.div`
+    font-size: 500%;
     text-align: center;
-    background-color: white;
-    margin-top: 30px;
+    color: black;
+    margin-top: 60px;
 `;
 
-export const Login = styled.div``;
-
-export const LoginButton = styled.button`
-    width: 50%;
+export const ButtonDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap : 3vh;
+`
+export const Action = styled.button`
+    width: 20%;
     height: 50px;
-    margin: auto;
-    display: block;
-    border: none;
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: 400;
     background-color: #4E4FEB;
+    border: none;
     border-radius: 10px;
     color: white;
-    cursor: pointer; 
-    margin-top: 30px;
+    cursor: pointer;
+`
 
+export const ButtonWrapper = styled.div`
+    display : flex;
+    flex-direction : row;
+    gap : 1vh;
+    justify-content : center;
+    margin-top: 34% ;
+`;
+
+export const ButtonRow = styled.div`
+    background-color : ${props => props.color || '#D9D9D9'};
+    color : white;
+    width : 12vh;
+    font-size : 20px;
+    border-radius : 10px;
+    height : 7vh;
+    display : flex;
+    align-items : center;
+    text-align : center;
+    justify-content : center;
+    margin-bottom :5vh;
 `;
 
 export const CustomLink = styled(Link)`
     text-decoration: none;
-`;
-
-export const New = styled.div`
-    font-size: 15px;
-    text-align: center;
-    background-color: white;
-    margin-top: 20px;
-`;
-
-export const HealthPumTa = styled.span`
-    font-size: 40px;
-`;
-
-export const NewPerson = styled.span`
-    margin: 0 10px;
-    color: #4E4FEB;
+    color : white;
 `;

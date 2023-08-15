@@ -17,8 +17,8 @@ export const Page = styled.div`
     justify-content: center;
 `;
 
-export const TitleWrap = styled.div`
-    margin-top: 100px;
+export const TitleDiv= styled.div`
+    margin-top: 15%;
     font-size: 26px;
     color: #4E4FEB; 
     text-align: center;
@@ -27,11 +27,18 @@ export const HealthPumTa = styled.span`
     font-size: 40px;
 `;
 
-export const ContentWrap = styled.div`
+export const ContentDiv = styled.div`
     margin-top: 60px;
-    flex: 1;
-    width: 80%;
-    align-self: center;
+    height: 500px;
+    width: 500px;
+    align-self: center;  
+`;
+
+export const InputId = styled.div`
+    font-size: 20px;
+    margin: 0 23px;
+    font-weight: 400;
+    color: #4E4FEB;
 `;
 
 export const InputWrap = styled.div`
@@ -45,15 +52,8 @@ export const InputWrap = styled.div`
     width: 80%;
 `;
 
-export const InputId = styled.div`
-    font-size: 20px;
-    font-weight: 400;
-    color: #4E4FEB;
-    
-`;
-
-export const InputTitle = styled.div`
-    margin-top: 26px;
+export const InputPassword = styled.div`
+    margin: 26px 0 0 23px;
     font-size: 20px;
     font-weight: 400;
     color: #4E4FEB;
@@ -69,21 +69,12 @@ export const Input = styled.input`
     background-color: white;
     color: black;
     &::placeholder{
-        color:rgb(212, 212, 212);
     }
 `;
 
-
-
-export const LoginBottom = styled.div`
-    margin-bottom: 30%;
-`;
-
-export const BottomButton = styled.button`
+export const LoginButton = styled.button`
     width: 50%;
     height: 50px;
-    margin: auto;
-    display: block;
     font-weight: 600;
     background-color: #4E4FEB;
     border-radius: 10px;
@@ -95,3 +86,9 @@ export const BottomButton = styled.button`
         border-color: #4E4FEB;
     }
 `
+export const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 120%;
+`;
