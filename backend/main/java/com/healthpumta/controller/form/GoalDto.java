@@ -1,12 +1,16 @@
 package com.healthpumta.controller.form;
 
 import com.healthpumta.domain.Goal;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class GoalDto {
-    private String goal;
-    public GoalDto(Goal goal) {
-        this.goal = goal.getName();
+    private String name;
+
+    public GoalDto() {
+    }
+
+    public GoalDto(Goal g) {
+        name = g.getName();
     }
 }

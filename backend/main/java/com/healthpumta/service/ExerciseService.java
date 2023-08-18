@@ -1,24 +1,24 @@
 package com.healthpumta.service;
 
 import com.healthpumta.controller.form.ExerciseForm;
-import com.healthpumta.controller.form.GoalDto;
 import com.healthpumta.domain.Exercise;
+import com.healthpumta.domain.Goal;
 import com.healthpumta.domain.Member;
 import com.healthpumta.repository.ExerciseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ExerciseService {
 
+    private final MemberService memberService;
     private final ExerciseRepository exerciseRepository;
+    private final GoalService goalService;
 
     // 운동 등록.
     @Transactional
@@ -43,18 +43,8 @@ public class ExerciseService {
     }
 
     // 운동 조회
+    @Transactional(readOnly = true)
     public Exercise findOne(Long exerciseId) {
         return exerciseRepository.findOne(exerciseId);
-    }
-
-    public List<ExerciseForm> findAll(Long memberId) {
-        try {
-            return exerciseRepository.findAll(memberId).stream()
-                    .map(e -> new ExerciseForm(e))
-                    .collect(Collectors.toList());
-        } catch (Exception e) {
-//            throw new NullPointerException("등록된 운동이 없습니다.");
-            return new ArrayList<>();
-        }
     }
 }

@@ -23,9 +23,10 @@ public class Goal {
         exercise.getGoals().add(this);
     }
 
-    public static void createGoal(Exercise exercise, String name) {
+    public static Goal createGoal(Exercise exercise, String name) {
         Goal goal = new Goal();
         goal.setExercise(exercise);
         goal.setName(name);
+        return goal;
     }
 }

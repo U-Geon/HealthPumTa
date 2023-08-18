@@ -14,40 +14,28 @@ public class MyPageController {
     private final MemberService memberService;
 
     // 마이 페이지
-    @GetMapping("/myPage")
+    @GetMapping(value = {"/myPage", "/myPage/edit"})
     public MemberForm myPage(Model model, HttpServletRequest request) {
-        Long id = SessionConfig.sessionMemberId(request);
-        Member findMember = memberService.findById(id);
-
-        MemberForm form = new MemberForm(findMember);
-        return form;
-    }
-
-    // 마이 페이지 수정
-    @GetMapping("/myPage/edit")
-    public MemberForm editMyPage(Model model, HttpServletRequest request) {
         Long memberId = SessionConfig.sessionMemberId(request);
 
         Member member = memberService.findById(memberId);
 
-        MemberForm form = new MemberForm();
-        form.setLoginId(member.getLoginId());
-        form.setPassword(member.getPassword());
-        form.setNickname(member.getNickname());
-        form.setHeight(member.getHeight());
-        form.setWeight(member.getWeight());
-        form.setAge(member.getAge());
-        form.setGender(member.getGender());
+        MemberForm form = new MemberForm(member);
 
         model.addAttribute("member", form);
-//        return "수정 페이지";
         return form;
     }
 
     @PostMapping("/myPage/edit")
     public MemberForm edit(HttpServletRequest request,@ModelAttribute MemberForm form) {
         Long memberId = SessionConfig.sessionMemberId(request);
-        memberService.updateMember(memberId, form.getPassword(), form.getHeight(), form.getWeight(), form.getAge());
+        memberService.updateMember(
+                memberId,
+                form.getPassword(),
+                form.getHeight(),
+                form.getWeight(),
+                form.getAge(),
+                form.getGender());
 
         return form;
     }

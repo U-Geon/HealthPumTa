@@ -14,7 +14,7 @@ public class HomeController {
 
     private final MemberService memberService;
     @GetMapping("/")
-    public String home(HttpServletRequest request, Model model) {
+    public String home(HttpServletRequest request) {
 
 //        Long id = SessionConfig.sessionMemberId(request);
 //        if(id == null) {
@@ -22,6 +22,7 @@ public class HomeController {
 //        }
 //        Member member = memberService.findById(id);
 //        model.addAttribute("member", member);
+
         return "메인화면";
     }
 }

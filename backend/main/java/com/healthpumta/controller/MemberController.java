@@ -11,18 +11,19 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
+@RequestMapping("/join")
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
 
     // 회원 가입
-    @GetMapping("/join")
+    @GetMapping
     public String createForm(Model model) {
         model.addAttribute("userForm", new MemberForm());
         return "회원가입 페이지";
     }
 
-    @PostMapping("/join")
+    @PostMapping
     public String create(@ModelAttribute MemberForm form) {
         Member member = new Member();
 
