@@ -5,10 +5,7 @@ import com.healthpumta.domain.Member;
 import com.healthpumta.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -27,7 +24,7 @@ public class MainController {
 
     // 타이머 완료
     @PostMapping("/main")
-    public String timerRecord(@RequestParam("time") String time,
+    public String timerRecord(@ModelAttribute String time,
                               HttpServletRequest request) {
         // 로그인 세션 정보 받아와서 id 넣기
         Long id = SessionConfig.sessionMemberId(request);

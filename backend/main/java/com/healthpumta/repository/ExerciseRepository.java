@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -21,18 +22,14 @@ public class ExerciseRepository {
     }
 
     // 해당 멤버의 운동 전체 조회
-    public List<Exercise> findAllByMember(Long memberId) {
+    public List<Exercise> findByMember(Long memberId) {
         try {
             return em.createQuery(
-                    "select e from Exercise e" +
-                            " join fetch e.member m" +
-                            " join fetch e.goal g" +
-                            " where e.member = :name"
-                            , Exercise.class)
-                    .setParameter("name", memberId)
+                    "select e from Exercise e where e.member.id = :id", Exercise.class)
+                    .setParameter("id", memberId)
                     .getResultList();
-        } catch (Exception e) {
-            throw new IllegalStateException("운동을 등록해주세요.");
+        } catch (NullPointerException e) {
+            return new ArrayList<>();
         }
     }
 
@@ -41,6 +38,4 @@ public class ExerciseRepository {
         Exercise exercise = em.find(Exercise.class, exerciseId);
         em.remove(em.contains(exercise) ? exercise : em.merge(exercise));
     }
-
-    // 멤버들과
 }

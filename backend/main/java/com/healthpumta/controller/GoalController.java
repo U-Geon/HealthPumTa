@@ -3,10 +3,9 @@ package com.healthpumta.controller;
 import com.healthpumta.controller.form.ExerciseForm;
 import com.healthpumta.controller.form.GoalDto;
 import com.healthpumta.domain.Exercise;
-import com.healthpumta.domain.Goal;
 import com.healthpumta.domain.Member;
-import com.healthpumta.repository.ExerciseRepository;
 import com.healthpumta.service.ExerciseService;
+import com.healthpumta.service.GoalService;
 import com.healthpumta.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,21 +22,25 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class GoalController {
     private final MemberService memberService;
-    private final ExerciseRepository exerciseRepository;
     private final ExerciseService exerciseService;
+    private final GoalService goalService;
 
     // 목표 페이지
     @GetMapping("/goal")
     public List<ExerciseForm> exercise(HttpServletRequest request) {
         // 로그인 정보 가져와서 연결하기.
         Long id = SessionConfig.sessionMemberId(request);
+        List<ExerciseForm> collect = null;
+        try {
+            collect = exerciseService.findByMember(id).stream()
+                    .map(e -> new ExerciseForm(e)).collect(Collectors.toList());
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
 
-        List<ExerciseForm> result = exerciseRepository.findAllByMember(id).stream()
-                .map(e -> new ExerciseForm(e))
-                .collect(Collectors.toList());
-
-        return result;
+        return collect;
     }
+
 
     // 목표 추가
     @GetMapping("/goal/new")
@@ -51,8 +55,11 @@ public class GoalController {
         Long id = SessionConfig.sessionMemberId(request);
         Member member = memberService.findById(id);
 
-        Exercise exercise = Exercise.createExercise(member, form);
+        Exercise exercise = Exercise.createExercise(member, form.getName(), form.getType());
         exerciseService.createExercise(exercise);
+        for (GoalDto goal : form.getGoals()) {
+            goalService.createGoal(exercise, goal.getName());
+        }
 
         return form;
     }

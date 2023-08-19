@@ -2,11 +2,9 @@ package com.healthpumta.domain;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -23,7 +21,4 @@ public class Member {
     private String loginId;
     private String password;
     private String timer;
-
-    @OneToMany(mappedBy = "member")
-    private List<Exercise> exercises = new ArrayList<>();
 }

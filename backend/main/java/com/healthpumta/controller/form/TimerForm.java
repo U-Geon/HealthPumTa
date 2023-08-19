@@ -8,8 +8,8 @@ public class TimerForm {
     private String timer;
 
     public TimerForm(Member member) {
-        if(member.getTimer() == null) {
-            timer = "00:00:00";
+        if(member.getTimer() == null || member.getTimer().equals("")) {
+            timer = "00_00_00";
         } else {
             timer = member.getTimer();
         }

@@ -4,24 +4,18 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+
 @Entity
 @Getter @Setter
 public class Goal {
 
     @Id @GeneratedValue
     private Long id;
-
+    private String name;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
-
-    private String name;
-
-    // 연관관계 편의 메서드
-    public void setExercise(Exercise exercise) {
-        this.exercise = exercise;
-        exercise.getGoals().add(this);
-    }
 
     public static Goal createGoal(Exercise exercise, String name) {
         Goal goal = new Goal();
