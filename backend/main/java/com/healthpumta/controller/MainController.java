@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -24,12 +26,12 @@ public class MainController {
 
     // 타이머 완료
     @PostMapping("/main")
-    public String timerRecord(@ModelAttribute String time,
+    public String timerRecord(@RequestBody Map<String, String> time,
                               HttpServletRequest request) {
         // 로그인 세션 정보 받아와서 id 넣기
         Long id = SessionConfig.sessionMemberId(request);
 
-        memberService.updateTimer(id, time);
+        memberService.updateTimer(id, time.get("timer"));
 
         return "redirect:/main";
     }

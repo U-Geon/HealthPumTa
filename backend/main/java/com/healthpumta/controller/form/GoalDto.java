@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class GoalDto {
     private String name;
-
     public GoalDto(Goal g) {
         name = g.getName();
     }

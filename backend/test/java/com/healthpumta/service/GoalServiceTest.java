@@ -30,7 +30,6 @@ class GoalServiceTest {
 //    Exercise exercise = Exercise.createExercise(member, form);
 
     @Test
-    @Rollback(value = false)
     public void 목표_추가() throws Exception {
         // given
         Member member = new Member();

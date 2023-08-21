@@ -29,7 +29,7 @@ public class GoalService {
         return goal.getId();
     }
 
-    // 세부 목표 제거
+    // 세부 목표 수정
     @Transactional
     public void deleteGoal(Long goalId) {
         goalRepository.delete(goalId);

@@ -2,8 +2,9 @@ package com.healthpumta.controller.form;
 
 import com.healthpumta.domain.Member;
 import lombok.Getter;
+import lombok.Setter;
 
-@Getter
+@Getter @Setter
 public class TimerForm {
     private String timer;
 

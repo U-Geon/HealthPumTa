@@ -2,6 +2,7 @@ package com.healthpumta.service;
 
 import com.healthpumta.controller.form.ExerciseForm;
 import com.healthpumta.domain.Exercise;
+import com.healthpumta.domain.Type;
 import com.healthpumta.repository.ExerciseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,10 +25,10 @@ public class ExerciseService {
     }
 
     // 운동 수정
-    public void editExercise(Long exerciseId, ExerciseForm form) {
+    public void editExercise(Long exerciseId, String name, Type type) {
         Exercise findExercise = exerciseRepository.findOne(exerciseId);
-        findExercise.setName(form.getName());
-        findExercise.setType(form.getType());
+        findExercise.setName(name);
+        findExercise.setType(type);
         // 세부 목표 수정 기능 추가해야 함.
     }
 

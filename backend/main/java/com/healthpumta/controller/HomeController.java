@@ -1,10 +1,8 @@
 package com.healthpumta.controller;
 
-import com.healthpumta.domain.Member;
 import com.healthpumta.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
