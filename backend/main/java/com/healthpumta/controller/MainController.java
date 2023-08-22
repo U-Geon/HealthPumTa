@@ -26,12 +26,12 @@ public class MainController {
 
     // 타이머 완료
     @PostMapping("/main")
-    public String timerRecord(@RequestBody Map<String, String> time,
+    public String timerRecord(@RequestBody TimerForm form,
                               HttpServletRequest request) {
         // 로그인 세션 정보 받아와서 id 넣기
         Long id = SessionConfig.sessionMemberId(request);
 
-        memberService.updateTimer(id, time.get("timer"));
+        memberService.updateTimer(id, form.getTimer());
 
         return "redirect:/main";
     }

@@ -7,7 +7,9 @@ import lombok.Setter;
 @Getter @Setter
 public class TimerForm {
     private String timer;
+    public TimerForm() {
 
+    }
     public TimerForm(Member member) {
         if(member.getTimer() == null || member.getTimer().equals("")) {
             timer = "00_00_00";

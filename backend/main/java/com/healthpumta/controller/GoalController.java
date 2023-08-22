@@ -49,7 +49,7 @@ public class GoalController {
     }
 
     @PostMapping("/goal/new")
-    public ExerciseForm create(@ModelAttribute ExerciseForm form,
+    public ExerciseForm create(@RequestBody ExerciseForm form,
                                HttpServletRequest request) throws Exception {
         // 세션에 등록된 멤버 가져오기.
         Long id = SessionConfig.sessionMemberId(request);

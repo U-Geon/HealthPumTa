@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class ExerciseForm {
     private String name;
     private Type type;
-    private List<GoalDto> goals = new ArrayList<>();
+    private List<GoalDto> goals;
 
     public ExerciseForm() {
     }
