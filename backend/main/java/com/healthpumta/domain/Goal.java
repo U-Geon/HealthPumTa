@@ -13,7 +13,7 @@ public class Goal {
     @Id @GeneratedValue
     private Long id;
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 

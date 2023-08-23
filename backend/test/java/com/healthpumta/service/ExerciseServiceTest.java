@@ -1,7 +1,6 @@
 package com.healthpumta.service;
 
 import com.healthpumta.controller.form.ExerciseForm;
-import com.healthpumta.controller.form.GoalDto;
 import com.healthpumta.domain.Exercise;
 import com.healthpumta.domain.Member;
 import com.healthpumta.domain.Type;

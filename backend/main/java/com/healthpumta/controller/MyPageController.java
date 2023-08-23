@@ -15,19 +15,18 @@ public class MyPageController {
 
     // 마이 페이지
     @GetMapping(value = {"/myPage", "/myPage/edit"})
-    public MemberForm myPage(Model model, HttpServletRequest request) {
+    public MemberForm myPage(HttpServletRequest request) {
         Long memberId = SessionConfig.sessionMemberId(request);
 
         Member member = memberService.findById(memberId);
 
         MemberForm form = new MemberForm(member);
 
-        model.addAttribute("member", form);
         return form;
     }
 
     @PostMapping("/myPage/edit")
-    public MemberForm edit(HttpServletRequest request,@ModelAttribute MemberForm form) {
+    public MemberForm edit(HttpServletRequest request, @RequestBody MemberForm form) {
         Long memberId = SessionConfig.sessionMemberId(request);
         memberService.updateMember(
                 memberId,

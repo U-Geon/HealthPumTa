@@ -43,11 +43,6 @@ public class GoalController {
 
 
     // 목표 추가
-    @GetMapping("/goal/new")
-    public ExerciseForm createExercisePage() {
-        return new ExerciseForm();
-    }
-
     @PostMapping("/goal/new")
     public ExerciseForm create(@RequestBody ExerciseForm form,
                                HttpServletRequest request) throws Exception {
@@ -57,10 +52,10 @@ public class GoalController {
         Member member = memberService.findById(id);
 
         Exercise exercise = Exercise.createExercise(member, form.getName(), form.getType());
-        exerciseService.createExercise(exercise);
         for (GoalDto goal : form.getGoals()) {
             goalService.createGoal(exercise, goal.getName());
         }
+        exerciseService.createExercise(exercise);
 
         return form;
     }

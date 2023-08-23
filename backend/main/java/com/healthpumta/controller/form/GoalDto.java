@@ -1,9 +1,11 @@
 package com.healthpumta.controller.form;
 
 import com.healthpumta.domain.Goal;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class GoalDto {
     private String name;
 

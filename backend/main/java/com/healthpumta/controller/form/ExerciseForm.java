@@ -1,11 +1,12 @@
 package com.healthpumta.controller.form;
 
 import com.healthpumta.domain.Exercise;
+import com.healthpumta.domain.Goal;
 import com.healthpumta.domain.Type;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,8 @@ public class ExerciseForm {
         name = exercise.getName();
         type = exercise.getType();
         goals = exercise.getGoal().stream()
-                .map(g -> new GoalDto(g))
+                .map(GoalDto::new)
                 .collect(Collectors.toList());
     }
 }
+

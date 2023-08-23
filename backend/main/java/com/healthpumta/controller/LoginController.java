@@ -14,17 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @Slf4j
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequiredArgsConstructor
 public class LoginController {
 
     private final LoginService loginService;
-
-    @GetMapping("/login")
-    public String loginForm(@ModelAttribute("loginForm") LoginForm form) {
-        return "login/loginForm";
-    }
 
     @PostMapping("/login")
     public String login(@RequestBody Map<String, Object> paraMap, HttpServletRequest request) {

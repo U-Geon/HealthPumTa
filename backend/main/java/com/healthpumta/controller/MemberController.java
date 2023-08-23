@@ -16,15 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
     private final MemberService memberService;
 
-    // 회원 가입
-    @GetMapping
-    public String createForm(Model model) {
-        model.addAttribute("userForm", new MemberForm());
-        return "회원가입 페이지";
-    }
-
     @PostMapping
-    public String create(@ModelAttribute MemberForm form) {
+    public String create(@RequestBody MemberForm form) {
         Member member = new Member();
 
         member.setLoginId(form.getLoginId());
