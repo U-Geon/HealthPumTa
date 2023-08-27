@@ -1,13 +1,10 @@
-<<<<<<< Updated upstream
 package com.healthpumta.domain;
 
+import com.healthpumta.controller.form.MemberForm;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -19,51 +16,30 @@ public class Member {
     private int height;
     private int weight;
     private int age;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private String loginId;
     private String password;
+    private String timer;
 
-    @OneToMany(mappedBy = "member")
-    private List<Exercise> exercises = new ArrayList<>();
+    public static Member createMember(String loginId,
+                                      String password,
+                                      String nickname,
+                                      Gender gender,
+                                      int height,
+                                      int weight,
+                                      int age) {
+        Member member = new Member();
 
-    public void addExercise(Exercise exercise) {
-        exercises.add(exercise);
-        exercise.setMember(this);
+        member.setLoginId(loginId);
+        member.setPassword(password);
+
+        member.setNickname(nickname);
+        member.setGender(gender);
+        member.setHeight(height);
+        member.setWeight(weight);
+        member.setAge(age);
+
+        return member;
     }
 }
-=======
-package com.healthpumta.domain;
-
-import jakarta.persistence.*;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-@Entity
-@Getter @Setter
-public class Member {
-    @Id @GeneratedValue
-    private Long id;
-    private String nickname;
-    private int height;
-    private int weight;
-    private int age;
-    @Enumerated
-    private Gender gender;
-    private String loginId;
-    private String password;
-
-    @OneToMany(mappedBy = "member")
-    private List<Exercise> exercises = new ArrayList<>();
-
-    public void addExercise(Exercise exercise) {
-        exercises.add(exercise);
-        exercise.setMember(this);
-    }
-}
->>>>>>> Stashed changes

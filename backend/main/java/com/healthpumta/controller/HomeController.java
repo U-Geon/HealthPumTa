@@ -1,13 +1,18 @@
 package com.healthpumta.controller;
 
-import org.springframework.stereotype.Controller;
+import com.healthpumta.service.MemberService;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequiredArgsConstructor
 public class HomeController {
+
+    private final MemberService memberService;
     @GetMapping("/")
-    public String home() {
-        return "홈페이지";
+    public String home(HttpServletRequest request) {
+        return " start page";
     }
 }
