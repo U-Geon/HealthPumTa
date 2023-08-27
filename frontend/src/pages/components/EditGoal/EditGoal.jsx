@@ -6,7 +6,7 @@ import GoalEditInput from "./GoalEditInput.jsx";
 import BottomButtonTwoWay from '../Reuse/BottomButtonTwoWay.jsx';
 import GoalEditCheckList from './GoalEditCheckList.jsx';
 import * as L from "./EditGoalStyle.js";
-
+import isWname from "./GoalEditInput.jsx";
 
 
 function EditGoal(){
@@ -15,7 +15,9 @@ function EditGoal(){
         <HeaderButton/>
         <GoalEditInput/>
         <GoalEditCheckList/>
-        <BottomButtonTwoWay/>
+        <BottomButtonTwoWay style = {
+            isWname ? {} : {backgroundColor : '#D9D9D9'} }>
+        </BottomButtonTwoWay>
     </L.Wrapper>;
 }
 

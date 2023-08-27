@@ -3,20 +3,20 @@ import {BrowserRouter, Link} from 'react-router-dom';
 import * as L from "./BottomButtonTwoWayStyle";
 
 const backButton = "이전";
-const nextButton = "다음";
+const nextButton = "완료";
 
 function BottomButtonTwoWay(){
     return (
         <L.ReuseButtonWrapper>
             <L.ReuseButtonContainer>
-                <L.StyledLink to="/">
+                <L.LStyledLink to="/">
                     {backButton}
-                </L.StyledLink>
+                </L.LStyledLink>
             </L.ReuseButtonContainer>
             <L.ReuseButtonContainer>
-                <L.StyledLink to="/">
+                <L.RStyledLink to="/">
                     {nextButton}
-                </L.StyledLink>
+                </L.RStyledLink>
             </L.ReuseButtonContainer>
         </L.ReuseButtonWrapper>
         
