@@ -57,13 +57,16 @@ function GoalEditModal() {
                     fontSize : '2vh',
                     alignItems : 'center',
                     display : 'flex',
-                    justifyContent : 'center'
+                    justifyContent : 'center',
+                    fontFamily : 'SebangGothic'
                     }}>운동을 선택해 주세요. {isDropdownView ? '▲' : '▼'}</button>
                     </label>
                     {isDropdownView && 
                         <ol style={{
                             listStyleType : 'none',
                             padding : '0',
+                            lineHeight : '4vh',
+                            fontSize : '2vh'
                         }}>
                             {
                                 Array(3).fill('').map((li, i) => (

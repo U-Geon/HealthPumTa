@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import {BrowserRouter, Link} from 'react-router-dom';
 
-export const StyledLink = styled(Link)`
+export const LStyledLink = styled(Link)`
+    color : #FFFFFF;
+    font-size : 20px;
+    display : flex;
+    justify-content : center;
+    text-decoration : none;
+`;
+
+export const RStyledLink = styled(Link)`
     color : #FFFFFF;
     font-size : 20px;
     display : flex;

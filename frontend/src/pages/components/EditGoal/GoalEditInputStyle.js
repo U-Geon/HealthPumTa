@@ -36,3 +36,10 @@ export const InputStyle = styled.div`
     align-items : center;
     gap : 1vh;
 `;
+
+export const Warning = styled.div`
+    display : flex;
+    justify-content : center;
+    color : red;
+    padding : 5vh 0vh 0vh 0vh;
+`;
